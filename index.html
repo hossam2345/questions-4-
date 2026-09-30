@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اختبار معلومات عامة</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="quiz-card">
+      <!-- اخنيار فئة-->
+      <div class="cat-choice">
+        <h1 style="text-align: center; color: #1e3a8a">اختر فئة الأسئلة↓</h1>
+        <button onclick="selectCategory(geographyQuestions)">جغرافيا</button>
+        <button onclick="selectCategory(historyQuestions)">تاريخ</button>
+        <button onclick="selectCategory(programmingQuestions)">برمجة</button>
+        <button onclick="selectCategory(englishQuestions)">لغة انجليزية</button>
+        <button onclick="selectCategory(biologyQuestions)">احياء</button>
+      </div>
+      <!-- قسم الأسئلة -->
+      <div id="quiz-section">
+        <div
+          class="any"
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <h2 id="progress">السؤال 1 من 3</h2>
+          <h2 id="timer">2:15</h2>
+        </div>
+        <div class="question" id="question-text">نص السؤال يظهر هنا</div>
+        <div class="options" id="options-container"></div>
+        <button
+          class="btn-submit"
+          id="next-btn"
+          disabled
+          onclick="handleNext()"
+        >
+          السؤال التالي
+        </button>
+      </div>
+
+      <!-- قسم النتائج -->
+      <div id="result-section" class="result-container">
+        <h2>نتيجة الاختبار</h2>
+        <div class="score-box">
+          <div class="score-text" id="score-display">0 / 0</div>
+        </div>
+
+        <div id="wrong-section">
+          <h3 style="color: #374151">الأخطاء والإجابات الصحيحة:</h3>
+          <div class="wrong-answers-list" id="wrong-list"></div>
+        </div>
+
+        <button class="btn-submit restart-btn" onclick="restartQuiz()">
+          إعادة الاختبار
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
