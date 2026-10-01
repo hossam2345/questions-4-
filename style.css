@@ -3,8 +3,53 @@
           font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
+      :root {
+          --page-background: #0b0f19;
+          --surface: #151d2a;
+          --heading-color: #ffffff;
+          --question-color: #ffffff;
+          --border-color: #2b384b;
+          --option-background: #151d2a;
+          --primary-color: #00f0ff;
+          --primary-hover: #00cbd9;
+          --option-hover: #1d293a;
+          --disabled-background: #334155;
+          --success-color: #00ff85;
+          --success-hover: #00d970;
+          --success-background: #00f0ff;
+          --success-border: #00ff85;
+          --success-text: #0b0f19;
+          --error-background: #271522;
+          --error-border: #ff2a5f;
+          --error-text: #ff2a5f;
+          --error-color: #ff2a5f;
+          --on-accent: #0b0f19;
+      }
+      [data-theme="light"] {
+          --page-background: #f8fafc;
+          --surface: #ffffff;
+          --heading-color: #1e3a8a;
+          --question-color: #1e3a8a;
+          --border-color: #cbd5e1;
+          --option-background: #ffffff;
+          --primary-color: #1e3a8a;
+          --primary-hover: #1e40af;
+          --option-hover: #e2e8f0;
+          --disabled-background: #94a3b8;
+          --success-color: #16a34a;
+          --success-hover: #15803d;
+          --success-background: #d1fae5;
+          --success-border: #16a34a;
+          --success-text: #065f46;
+          --error-background: #fee2e2;
+          --error-border: #dc2626;
+          --error-text: #dc2626;
+          --error-color: #dc2626;
+          --on-accent: #ffffff;
+      }
+
       body {
-          background-color: #f4f7f6;
+          background-color: var(--page-background);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -15,17 +60,29 @@
       }
 
       .quiz-card {
-          background-color: #ffffff;
+          background-color: var(--surface);
           border-radius: 12px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
           width: 100%;
           max-width: 600px;
           padding: 25px;
+          border: 2px solid var(--border-color);
       }
 
       #quiz-section,
       #result-section {
           display: none;
+      }
+      .btn-toggle {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background-color: var(--primary-color);
+          color: var(--on-accent);
+          border: none;
+          padding: 10px 15px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: bold;
       }
 
       .cat-choice {
@@ -36,20 +93,22 @@
       }
 
       .cat-choice label {
-          color: #2c3e50;
+          color: var(--heading-color);
           font-weight: 700;
       }
 
       #question-count {
           width: 100%;
           padding: 10px 12px;
-          border: 2px solid #e9ecef;
+          color: var(--question-color);
+          background-color: var(--option-background);
+          border: 2px solid var(--border-color);
           border-radius: 8px;
           font-size: 1rem;
       }
 
       h2 {
-          color: #2c3e50;
+          color: var(--heading-color);
           margin-top: 0;
       }
 
@@ -60,8 +119,12 @@
       .question {
           font-size: 1.15rem;
           margin-bottom: 15px;
-          color: #34495e;
+          color: var(--question-color);
           font-weight: 600;
+      }
+
+      #timer {
+          color: var(--primary-color);
       }
 
       .options {
@@ -73,11 +136,11 @@
 
       .option-btn,
       .cat-choice button {
-          background-color: #f8f9fa;
-          border: 2px solid #e9ecef;
+          background-color: var(--option-background);
+          border: 2px solid var(--border-color);
           border-radius: 8px;
           padding: 12px 15px;
-          color: #2563eb;
+          color: var(--primary-color);
           text-align: right;
           cursor: pointer;
           font-weight: 700;
@@ -89,27 +152,27 @@
           text-align: center;
 
           &:hover {
-              background-color: #3b82f6;
-              color: white;
-              border-color: #2563eb;
+              background-color: var(--primary-hover);
+              color: var(--on-accent);
+              border-color: var(--primary-color);
           }
       }
 
       .option-btn:hover {
-          background-color: #e2e8f0;
-          border-color: #cbd5e1;
+          background-color: var(--option-hover);
+          border-color: var(--disabled-background);
       }
 
       .option-btn.selected {
-          background-color: #3b82f6;
-          color: white;
-          border-color: #2563eb;
+          background-color: var(--primary-hover);
+          color: var(--on-accent);
+          border-color: var(--primary-color);
       }
 
       .btn-submit {
           width: 100%;
-          background-color: #10b981;
-          color: white;
+          background-color: var(--primary-hover);
+          color: var(--on-accent);
           border: none;
           padding: 12px;
           border-radius: 8px;
@@ -120,19 +183,19 @@
       }
 
       .btn-submit:hover {
-          background-color: #059669;
+          background-color: var(--primary-color);
       }
 
       .btn-submit:disabled {
-          background-color: #cbd5e1;
+          background-color: var(--disabled-background);
           cursor: not-allowed;
       }
 
       /* تنسيقات صفحة النتيجة */
       .score-box {
           text-align: center;
-          background-color: #f0fdf4;
-          border: 1px solid #bbf7d0;
+          background-color: var(--success-background);
+          border: 1px solid var(--success-border);
           padding: 20px;
           border-radius: 8px;
           margin-bottom: 20px;
@@ -140,7 +203,7 @@
 
       .score-text {
           font-size: 1.5rem;
-          color: #166534;
+          color: var(--success-text);
           font-weight: bold;
       }
 
@@ -149,8 +212,8 @@
       }
 
       .wrong-item {
-          background-color: #fef2f2;
-          border: 1px solid #fecaca;
+          background-color: var(--error-background);
+          border: 1px solid var(--error-border);
           border-radius: 8px;
           padding: 15px;
           margin-bottom: 12px;
@@ -158,7 +221,7 @@
 
       .wrong-title {
           font-weight: bold;
-          color: #991b1b;
+          color: var(--error-text);
           margin-bottom: 8px;
       }
 
@@ -168,19 +231,25 @@
       }
 
       .your-answer {
-          color: #dc2626;
+          color: var(--error-color);
       }
 
       .correct-answer {
-          color: #16a34a;
+          display: block;
+          padding: 4px 6px;
+          color: var(--primary-color);
           font-weight: bold;
       }
 
+      #wrong-section h3 {
+          color: var(--heading-color);
+      }
+
       .restart-btn {
-          background-color: #3b82f6;
+          background-color: var(--primary-hover);
           margin-top: 15px;
       }
 
       .restart-btn:hover {
-          background-color: #2563eb;
+          background-color: var(--primary-color);
       }

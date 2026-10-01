@@ -1,18 +1,29 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>اختبار معلومات عامة</title>
+    <title>اختبار اسئلة</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="website icon" href="role-quiz-company.webp" />
   </head>
   <body>
+    <button class="btn-toggle" onclick="toggleTheme()">تبديل الوضع</button>
     <div class="quiz-card">
       <!-- اخنيار فئة-->
       <div class="cat-choice">
-        <h1 style="text-align: center; color: #1e3a8a">اختر فئة الأسئلة↓</h1>
+        <h1 style="text-align: center; color: var(--heading-color)">
+          اختر فئة الأسئلة↓
+        </h1>
         <label for="question-count">عدد الأسئلة:</label>
-        <input id="question-count" type="number" min="1" max="101" value="15" maxlength="3"/>
+        <input
+          id="question-count"
+          type="number"
+          min="1"
+          max="101"
+          value="15"
+          maxlength="3"
+        />
         <button onclick="selectCategory(geographyQuestions)">جغرافيا</button>
         <button onclick="selectCategory(historyQuestions)">تاريخ</button>
         <button onclick="selectCategory(programmingQuestions)">برمجة</button>
@@ -53,7 +64,7 @@
         </div>
 
         <div id="wrong-section">
-          <h3 style="color: #374151">الأخطاء والإجابات الصحيحة:</h3>
+          <h3>الأخطاء والإجابات الصحيحة:</h3>
           <div class="wrong-answers-list" id="wrong-list"></div>
         </div>
 

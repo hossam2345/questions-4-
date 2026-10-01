@@ -1484,7 +1484,18 @@ let timerInterval;
 let startTime = 120000;
 let timeLeft = startTime;
 let isTimeExpired = false;
-
+let savedTheme = localStorage.getItem("theme") || "dark"
+document.documentElement.setAttribute("data-theme", savedTheme);
+function toggleTheme() {
+    let theme = document.documentElement.getAttribute("data-theme");
+    if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");  
+    }
+}
 const quizData = [];
 
 function updateTimerDisplay() {
@@ -1530,7 +1541,7 @@ function selectCategory(questions) {
     questionCountInputEl.max = questions.length;
     questionCountInputEl.value = questionCount;
     startTime = questionCount * 8000;
-    for(let i = questions.length - 1; i > 0; i--){
+    for (let i = questions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [questions[i], questions[j]] = [questions[j], questions[i]];
     }
@@ -1672,7 +1683,7 @@ function showResults() {
 
     if (!hasWrongAnswers) {
         document.getElementById("wrong-section").innerHTML =
-            '<p style="color: #16a34a; text-align: center; font-weight: bold;">ممتاز! جميع إجاباتك كانت صحيحة.</p>';
+            '<p style="color: var(--correct-color); text-align: center; font-weight: bold;">ممتاز! جميع إجاباتك كانت صحيحة.</p>';
     }
 }
 
